@@ -34,7 +34,9 @@ const TradeMatcher = ({ data }) => {
               <td className="py-2">{trade.prosumerId}</td>
               <td
                 className={`py-2 ${
-                  trade.type === "Buy" ? "text-[#96E363]" : "text-[#E36262]"
+                  trade.type === "Buy" ? 
+                  "bg-gradient-to-r from-[#AAE6E7] to-[#95E362]  bg-clip-text text-transparent" :
+                   "bg-gradient-to-r from-[#E7AAAA] to-[#E36262]  bg-clip-text text-transparent"
                 }`}
               >
                 {trade.type}

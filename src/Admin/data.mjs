@@ -2,6 +2,10 @@ import price from "../assets/1.png";
 import balance from "../assets/2.png";
 import energy from "../assets/3.png";
 import revenue from "../assets/4.png";
+import sunIcon from "../assets/sunIcon.svg"
+import windIcon from "../assets/windIcon.svg"
+import gridsIcon from "../assets/gridsIcon.svg"
+import batteryIcon from "../assets/batteryIcon.svg"
 
 export const adminHomeData = [
     { prosumerId: "B1", type: "Buy", amount: 192.33, price: 962.24, location: "Zone 2", status: "Matched" },
@@ -91,7 +95,7 @@ export const  AdminGridCards = [
   
 
   export const TradingCardsData = [
-    { heading: "Current Prize", text: "₹3500.00", icon: balance },
+    { heading: "Current Price", text: "₹3500.00", icon: balance },
     { heading: "Current Demand", text: "15.0%", icon: revenue },
     { heading: "Trading Volume", text: "8.0%", icon: energy },
     { heading: "Active Orders", text: "1.88", icon: price },
@@ -100,9 +104,9 @@ export const  AdminGridCards = [
   export const EnergySources = {
     heading: "Energy Sources",
     data: [
-      { heading: "Solar", text: "81.2%", icon: balance },
-      { heading: "Wind", text: "765 kW", icon: revenue },
-      { heading: "Battery", text: "1000kW", icon: energy },
-      { heading: "Grid", text: "1000kW", icon: price },
+      { heading: "Solar", text: "81.2%", icon: sunIcon },
+      { heading: "Wind", text: "765 kW", icon: windIcon },
+      { heading: "Battery", text: "1000kW", icon: batteryIcon },
+      { heading: "Grid", text: "1000kW", icon: gridsIcon },
     ],
   }

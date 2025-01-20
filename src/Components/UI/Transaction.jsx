@@ -37,9 +37,30 @@ const Transcation = () => {
           <p>Total</p>
           <p>₹12.00</p>
         </div>
-        <button className={isbuy ? "buttonBuy" : "buttonOffer"}>
-          <p>{isbuy ? "Place Order" : "Place Offer"}</p>
+
+
+        <button
+          className={`rounded-md p-0.5 ${isbuy
+              ? "bg-gradient-to-r from-[#AAE6E7] to-[#95E362] shadow-[0_0px_15px_rgba(107,255,107,0.2)]"
+              : "bg-gradient-to-r from-[#E7AAAA] to-[#E36262] shadow-[0_0px_15px_rgba(255,107,107,0.2)]"
+            }`}
+        >
+          <span
+            className={`flex w-full bg-PrimaryBlack rounded px-8 py-2 justify-center ${isbuy
+                ? "shadow-[0_0px_12px_rgba(107,255,107,0.25)]"
+                : "shadow-[0_0px_12px_rgba(255,107,107,0.25)]"
+              }`}
+          >
+            <span
+              className={`bg-gradient-to-r ${isbuy ? "from-[#AAE6E7] to-[#95E362]" : "from-[#E7AAAA] to-[#E36262]"
+                } bg-clip-text text-transparent`}
+            >
+              {isbuy ? "Place Order" : "Place Offer"}
+            </span>
+          </span>
         </button>
+
+
       </form>
     </div>
   );

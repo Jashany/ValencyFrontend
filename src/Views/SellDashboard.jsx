@@ -36,12 +36,13 @@ const pricePredictions = [
 ];
 
 const transactions = [
-    { date: "7 Jan", pricePerUnit: 11.0, amount: 40, total: 440.0 },
-    { date: "7 Jan", pricePerUnit: 11.0, amount: 40, total: 440.0 },
-    { date: "7 Jan", pricePerUnit: 11.0, amount: 40, total: 440.0 },
-    { date: "7 Jan", pricePerUnit: 11.0, amount: 40, total: 440.0 },
-    { date: "7 Jan", pricePerUnit: 11.0, amount: 40, total: 440.0 },
-  ];
+  { date: "7 Jan", pricePerUnit: 10.5, amount: 50, total: 525.0 },
+  { date: "8 Jan", pricePerUnit: 11.2, amount: 30, total: 336.0 },
+  { date: "9 Jan", pricePerUnit: 10.8, amount: 45, total: 486.0 },
+  { date: "10 Jan", pricePerUnit: 11.0, amount: 60, total: 660.0 },
+  { date: "11 Jan", pricePerUnit: 11.5, amount: 35, total: 402.5 },
+  { date: "12 Jan", pricePerUnit: 9.4, amount: 40, total: 703.8 },
+];
   
 
 const headCardsData = [
@@ -51,8 +52,8 @@ const headCardsData = [
 
 const SellDashboard = () => {
   return (
-    <div className="flex flex-col w-[90%] gap-6 mx-auto mt-6">
-      <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-full ">
+    <div className="flex flex-col w-[90%] gap-4 mx-auto">
+      <div className="grid  grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 w-full mb-4">
         {headCardsData.map((item) => (
           <HeadCards
             key={item.heading}
@@ -62,7 +63,7 @@ const SellDashboard = () => {
           />
         ))}
       </div>
-      <div className="flex min-h-[350px] lg:flex-row flex-col w-full gap-6">
+      <div className="flex min-h-[350px] lg:flex-row flex-col w-full gap-4">
         <div className="flex w-[70%]">
           <AreaChart
             data={pricePredictions}
@@ -75,8 +76,8 @@ const SellDashboard = () => {
           <Transcation />
         </div>
       </div>
-      <div className="flex min-h-[350px] mb-8 w-full gap-6">
-        <div className="flex w-[70%] h-[400px] gap-6">
+      <div className="flex min-h-[350px] mb-8 w-full gap-4">
+        <div className="flex w-[70%] h-[400px] gap-4">
           <BarChart
             data={consumptionHistory}
             xKey={"date"}

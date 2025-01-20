@@ -10,7 +10,7 @@ const ActiveAlerts = ({ alerts }) => {
 
   return (
     <div className="bg-[#1e1e1e] text-white p-6 rounded-lg shadow-lg">
-      <h2 className="text-[#D2D2D2] text-2xl font-semibold mb-5">Active Alerts</h2>
+      <h2 className="text-[#D2D2D2] text-2xl font-bold mb-5">Active Alerts</h2>
       <div className="space-y-3">
         {alerts.map((alert, index) => (
           <div
