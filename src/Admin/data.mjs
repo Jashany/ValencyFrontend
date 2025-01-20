@@ -49,9 +49,60 @@ export const  AdminGridCards = [
   ];
   
   export const DoubleBarGridData = [
-    { zone: "1", capacity: 140, current: 120 },
-    { zone: "2", capacity: 150, current: 100 },
-    { zone: "3", capacity: 110, current: 80 },
+    { zone: "Zone 1", capacity: 140, current: 120 },
+    { zone: "Zone 2", capacity: 150, current: 100 },
+    { zone: "Zone 3", capacity: 110, current: 80 },
+  ];
+  
+  export const PortfolioHeadCards = [
+    { heading: "Portfolio Value", text: "₹3500.00", icon: balance },
+    { heading: "Total Return", text: "15.0%", icon: revenue },
+    { heading: "Risk Level", text: "8.0%", icon: energy },
+    { heading: "Sharpe Ratio", text: "1.88", icon: price}
+  ];
+
+  export const PortfoliobarData = [
+    {
+      asset: "Solar",
+      currentOutput: 65, // in kW
+      capacity: 120, // in kW
+    },
+    {
+      asset: "Wind",
+      currentOutput: 80, // in kW
+      capacity: 140, // in kW
+    },
+    {
+      asset: "Battery",
+      currentOutput: 40, // in kW
+      capacity: 90, // in kW
+    },
   ];
   
 
+  export const assetDistributionData = {
+    totalGenerated: "1200kWh", // in kWh
+    sources: [
+      { name: "Solar", percentage: 45, color: "#FFFEB6" },
+      { name: "Wind", percentage: 30, color: "#5CD085" },
+      { name: "Battery", percentage: 16, color: "#3AA96A" },
+    ],
+  };
+  
+
+  export const TradingCardsData = [
+    { heading: "Current Prize", text: "₹3500.00", icon: balance },
+    { heading: "Current Demand", text: "15.0%", icon: revenue },
+    { heading: "Trading Volume", text: "8.0%", icon: energy },
+    { heading: "Active Orders", text: "1.88", icon: price },
+  ];
+
+  export const EnergySources = {
+    heading: "Energy Sources",
+    data: [
+      { heading: "Solar", text: "81.2%", icon: balance },
+      { heading: "Wind", text: "765 kW", icon: revenue },
+      { heading: "Battery", text: "1000kW", icon: energy },
+      { heading: "Grid", text: "1000kW", icon: price },
+    ],
+  }

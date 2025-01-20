@@ -73,13 +73,13 @@ const DoubleBarChart = ({ data, xKey, yKey1, yKey2, heading }) => {
           {/* <Legend wrapperStyle={{ color: "#fff" }} /> */}
           <Bar
             dataKey={yKey1}
-            fill={`url(#${gradientId1})`}
+            fill={`#FFFEA0`}
             radius={[5, 5, 0, 0]}
             name="Dataset 1"
           />
           <Bar
             dataKey={yKey2}
-            fill={`url(#${gradientId2})`}
+            fill={`#333333`}
             radius={[5, 5, 0, 0]}
             name="Dataset 2"
           />

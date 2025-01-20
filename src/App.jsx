@@ -9,6 +9,9 @@ import SellDashboard from './Views/SellDashboard'
 import BuyDashboard from './Views/BuyDashboard'
 import AdminHome from './Admin/AdminHome'
 import AdminGrid from './Admin/AdminGrid'
+import AdminPortfolio from './Admin/AdminPortfolio'
+import AdminTrading from './Admin/AdminTrading'
+import { AdminSideBar } from './Components/UI/AdminSideBar'
 function App() {
 
   return (
@@ -23,6 +26,8 @@ function App() {
         <Route path='/admin' element={<AdminLayout />}>
           <Route path='/admin/' element={<AdminHome />} />
           <Route path='/admin/grid' element={<AdminGrid />} />
+          <Route path='/admin/portfolio' element={<AdminPortfolio />} />
+          <Route path='/admin/trading' element={<AdminTrading />} />
         </Route>
       </Routes>
     </div>
@@ -44,7 +49,7 @@ const Layout = () => {
 const AdminLayout = () =>{
   return (
     <div className='flex flex-grow'>
-      <Sidebar />
+      <AdminSideBar />
       <div className='w-[100%] h-[100dvh] overflow-scroll'>
         <Header />
         <Outlet />

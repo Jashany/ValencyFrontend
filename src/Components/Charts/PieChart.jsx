@@ -6,7 +6,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const HalfPieChart = ({ data, dataKey, heading }) => {
+const HalfPieChart = ({ data, dataKey, heading,underKeyData }) => {
   //sum of data.value - the last index
   const totalPercentage = data.reduce((acc, curr, index) => {
     if (index === data.length - 1) {
@@ -15,7 +15,8 @@ const HalfPieChart = ({ data, dataKey, heading }) => {
     return acc + curr.value;
   }, 0);
   return (
-    <div className="bg-PrimaryGrayDark"
+    <div
+      className="bg-PrimaryGrayDark"
       style={{
         width: "100%",
         height: "fit-content",
@@ -38,9 +39,16 @@ const HalfPieChart = ({ data, dataKey, heading }) => {
           {heading}
         </h3>
       )}
-      <div style={{ position: "relative", width: "100%", height: "100%", marginTop:"30px" }}>
-        <ResponsiveContainer width="100%" height="100%" minHeight={'300px'}>
-          <RechartsPieChart >
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "100%",
+          marginTop: "30px",
+        }}
+      >
+        <ResponsiveContainer width="100%" height="100%" minHeight={"300px"}>
+          <RechartsPieChart>
             <Pie
               data={data}
               dataKey={dataKey}
@@ -66,27 +74,39 @@ const HalfPieChart = ({ data, dataKey, heading }) => {
                 fontSize: "1.5rem",
                 fontWeight: "bold",
                 fill: "#fff",
-                width:"30px"
+                width: "30px",
+                wordBreak:"break-all"
               }}
             >
-              {totalPercentage}% utilized
+              {underKeyData ? `${underKeyData}`  : totalPercentage}
             </text>
           </RechartsPieChart>
         </ResponsiveContainer>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-[-100px]">
+      <div
+        className={`grid ${
+          data.length === 4
+            ? "grid-cols-2 md:grid-cols-2"
+            : "grid-cols-3 md:grid-cols-3"
+        } gap-4 mt-[-100px]`}
+      >
         {data.map((entry, index) => (
-          <div className="bg-[#292929] flex flex-col gap-6 p-4" key={`cell-${index}`}>
+          <div
+            className="bg-[#292929] flex flex-col gap-6 p-4"
+            key={`cell-${index}`}
+          >
             <div className="flex text-white gap-2 items-center">
-              <div style={{
-                backgroundColor: entry.color,
-                width: "20px",
-                height: "20px",
-                borderRadius: "3px",
-              }}></div>
+              <div
+                style={{
+                  backgroundColor: entry.color,
+                  width: "20px",
+                  height: "20px",
+                  borderRadius: "3px",
+                }}
+              ></div>
               <p>{entry.name}</p>
             </div>
-            <p className="text-2xl font-bold text-white">{entry.value}%</p>
+            <p className="text-2xl font-bold text-white">{entry.value || entry.percentage}%</p>
           </div>
         ))}
       </div>
