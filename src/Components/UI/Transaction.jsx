@@ -13,7 +13,7 @@ const Transcation = () => {
           <input type="Number" name="energy" placeholder="0" />
         </label>
         <label>
-          Max Price ($/kWh)
+          Max Price (₹/kWh)
           <input type="Number" name="price" placeholder="0" />
         </label>
         <label>
@@ -35,7 +35,7 @@ const Transcation = () => {
         </label>
         <div className="flex justify-between">
           <p>Total</p>
-          <p>$12.00</p>
+          <p>₹12.00</p>
         </div>
         <button className={isbuy ? "buttonBuy" : "buttonOffer"}>
           <p>{isbuy ? "Place Order" : "Place Offer"}</p>

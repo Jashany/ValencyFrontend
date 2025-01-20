@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import dark from '../../assets/darkMode.png'
 import light from '../../assets/lightMode.png'
 const ShiftButton = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   const toggleMode = () => {
     setIsDarkMode(!isDarkMode);

@@ -26,10 +26,10 @@ const BarChart = ({ data, xKey, yKey, heading }) => {
         <h3
           style={{
             textAlign: "left",
-            color: "#fff",
+            color: "#d2d2d2",
             marginBottom: "10px",
             fontSize: "1.5rem",
-            fontWeight: "600",
+            fontWeight: "700",
             marginLeft: "20px",
             marginTop: "0px",
           }}

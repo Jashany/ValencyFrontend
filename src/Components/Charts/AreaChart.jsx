@@ -14,7 +14,7 @@ const AreaChart = ({ data, xKey, yKey, heading }) => {
   console.log(data);
   return (
     <div style={{ width: "100%", height: "100%", backgroundColor: "#1e1e1e", borderRadius: "10px", padding: "10px" }}>
-      {heading && <h3 style={{ textAlign: "left", color: "#fff", marginBottom: "20px",fontSize:"1.75rem",fontWeight:"600",marginLeft:"20px",marginTop:"10px" }}>{heading}</h3>}
+      {heading && <h3 style={{ textAlign: "left", color: "#d2d2d2", marginBottom: "20px",fontSize:"1.5rem",fontWeight:"700",marginLeft:"20px",marginTop:"10px" }}>{heading}</h3>}
       <ResponsiveContainer width="95%" height="80%">
         <RechartsAreaChart data={data} margin={{ top: 20, right: 10, left: 10, bottom: 10 }}>
           <defs>
