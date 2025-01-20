@@ -9,36 +9,38 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const AreaChart = ({ data: initialData, xKey, yKey, heading }) => {
+const DoubleAreaChart = ({ data: initialData, xKey, yKeys, heading }) => {
   const [data, setData] = useState(initialData || []);
-  const gradientId = "colorGradient";
+  const gradientIds = ["colorGradient1", "colorGradient2"]; // Gradient IDs for both areas
 
   useEffect(() => {
-   const addRandomData = () => {
+    const addRandomData = () => {
       setData((prevData) => {
         const nextIndex = prevData.length + 1;
-        const lastValue = prevData[prevData.length - 1]?.[yKey] || 50; // Default to 50 if no data exists
-        const newValue = Math.max(
-          0,
-          Math.min(100, lastValue + (Math.random() * 20 - 10)) // Change by ±10, keeping it within 0-100
+        const lastValues = yKeys.map(
+          (yKey) => prevData[prevData.length - 1]?.[yKey] || 50
+        ); // Default to 50 if no data exists
+
+        const newValues = lastValues.map(
+          (lastValue) =>
+            Math.max(0, Math.min(1000, lastValue + (Math.random() * 200 - 100))) // Change by ±100, keeping within 0-1000
         );
-        const newEntry = { [xKey]: nextIndex, [yKey]: newValue };
-        //delete the oldest data point
-        if (prevData.length > 10)
-        prevData.shift();
+
+        const newEntry = { [xKey]: nextIndex };
+        yKeys.forEach((yKey, i) => (newEntry[yKey] = newValues[i]));
+
+        // Delete the oldest data point
+        if (prevData.length > 10) prevData.shift();
         return [...prevData, newEntry];
       });
     };
-     
 
     // Add random data every 2 seconds
     const intervalId = setInterval(addRandomData, 2000);
-    
-    
 
     // Cleanup interval on unmount
     return () => clearInterval(intervalId);
-  }, [xKey, yKey]);
+  }, [xKey, yKeys]);
 
   return (
     <div
@@ -71,14 +73,28 @@ const AreaChart = ({ data: initialData, xKey, yKey, heading }) => {
           margin={{ top: 20, right: 10, left: 10, bottom: 10 }}
         >
           <defs>
-            <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#FFFEB6" stopOpacity={1} />
-              <stop
-                offset="100%"
-                stopColor="rgba(255, 254, 197, 0)"
-                stopOpacity={0}
-              />
-            </linearGradient>
+            <defs>
+              <linearGradient id="gradient1" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#FFFEB6" stopOpacity={1} />
+                <stop
+                  offset="100%"
+                  stopColor="rgba(255, 254, 197, 0)"
+                  stopOpacity={0}
+                />
+              </linearGradient>
+              <linearGradient id="gradient2" x1="0" y1="0" x2="0" y2="1">
+                <stop
+                  offset="0%"
+                  stopColor="rgba(51, 51, 51, 01)"
+                  stopOpacity={1}
+                />
+                <stop
+                  offset="100%"
+                  stopColor="rgba(62, 62, 62, 0.5)"
+                  stopOpacity={0}
+                />
+              </linearGradient>
+            </defs>
           </defs>
           <CartesianGrid strokeDasharray="3 3" stroke="#444" />
           <XAxis
@@ -96,13 +112,20 @@ const AreaChart = ({ data: initialData, xKey, yKey, heading }) => {
             }}
             itemStyle={{ color: "#fff" }}
           />
+          {/* First Area */}
           <Area
             type="monotone"
-            dataKey={yKey}
+            dataKey="value1"
             stroke="#FFFEB6"
             strokeWidth={2}
-            fill={`url(#${gradientId})`}
-            animationDuration={500}
+            fill="url(#gradient1)"
+          />
+          <Area
+            type="monotone"
+            dataKey="value2"
+            stroke="#FFF"
+            strokeWidth={2}
+            fill="url(#gradient2)"
           />
         </RechartsAreaChart>
       </ResponsiveContainer>
@@ -110,4 +133,4 @@ const AreaChart = ({ data: initialData, xKey, yKey, heading }) => {
   );
 };
 
-export default AreaChart;
+export default DoubleAreaChart;
