@@ -2,8 +2,8 @@
 
 const HeadCards = ({heading,text,icon}) => {
     return ( 
-        <div className="bg-[#FFFEA0] flex flex-col justify-between min-h-[120px] rounded-xl p-4">
-            <div>
+        <div className="bg-[#FFFEA0] flex flex-col justify-between min-h-[120px] rounded-xl p-4 text-PrimaryBlack">
+            <div className="font-medium">
             {heading}
             </div>
             <div className="flex items-center justify-between">

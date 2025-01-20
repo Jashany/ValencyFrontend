@@ -17,7 +17,7 @@ const ToggleButton = () => {
 
   return (
     <div
-      className="flex  items-center justify-between w-52 h-10 bg-[#262626] shadow-lg rounded-lg cursor-pointer transition-colors duration-300"
+      className="flex items-center justify-between w-52 h-10 bg-[#262626] shadow-lg rounded-lg cursor-pointer transition-colors duration-300"
       onClick={toggleMode}
     >
       <div

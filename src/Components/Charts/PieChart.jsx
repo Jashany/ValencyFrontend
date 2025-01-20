@@ -28,10 +28,10 @@ const HalfPieChart = ({ data, dataKey, heading,underKeyData }) => {
         <h3
           style={{
             textAlign: "left",
-            color: "#fff",
+            color: "#d2d2d2",
             marginBottom: "10px",
-            fontSize: "1.75rem",
-            fontWeight: "600",
+            fontSize: "1.5rem",
+            fontWeight: "700",
             marginLeft: "20px",
             marginTop: "0px",
           }}
@@ -91,19 +91,14 @@ const HalfPieChart = ({ data, dataKey, heading,underKeyData }) => {
         } gap-4 mt-[-100px]`}
       >
         {data.map((entry, index) => (
-          <div
-            className="bg-[#292929] flex flex-col gap-6 p-4"
-            key={`cell-${index}`}
-          >
+          <div className="bg-[#292929] flex flex-col gap-6 p-4 rounded-lg" key={`cell-${index}`}>
             <div className="flex text-white gap-2 items-center">
-              <div
-                style={{
-                  backgroundColor: entry.color,
-                  width: "20px",
-                  height: "20px",
-                  borderRadius: "3px",
-                }}
-              ></div>
+              <div style={{
+                backgroundColor: entry.color,
+                width: "20px",
+                height: "20px",
+                borderRadius: "4px",
+              }}></div>
               <p>{entry.name}</p>
             </div>
             <p className="text-2xl font-bold text-white">{entry.value || entry.percentage}%</p>

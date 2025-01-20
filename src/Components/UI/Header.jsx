@@ -3,9 +3,9 @@ import ShiftButton from "../Buttons/Shift";
 import icon from "../../assets/icon.png";
 export function Header() {
   return (
-    <header className="flex h-16 w-full items-center justify-between px-6">
+    <header className="flex w-full items-center justify-between px-14 py-8">
       <div className="flex items-center gap-2">
-        <span className="text-md font-semibold text-muted-foreground  text-PrimaryGrayText">
+        <span className="text-base font-semibold text-muted-foreground  text-PrimaryGrayText">
           Good Morning,
         </span>
         <span
