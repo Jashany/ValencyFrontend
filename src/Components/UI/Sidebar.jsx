@@ -4,7 +4,7 @@ import amplAiLogo from "../../assets/logo.svg";
 import ToggleButton from "../Buttons/Toggle"
 
 const navItems = [
-  { icon: Home, label: 'Home', href: '/' },
+  { icon: Home, label: 'Home', href: '/dashboard' },
   { icon: LayoutDashboard, label: 'Dashboard', href: '/dashboard/buy' },
   { icon: Zap, label: 'Energy Details', href: '/energy' },
   // { icon: Pizza, label: 'Pizza', href: '/pizza' },
@@ -16,7 +16,7 @@ export function Sidebar() {
   return (
     <aside className=" h-screen min-w-[250px] w-[15%] rounded-r-2xl text-PrimaryGrayTextLight bg-[#1D1D1D]">
       <div className="flex h-16 items-center pl-8 pt-8">
-        <Link href="/">
+        <Link href="/dashboard">
           <img src = {amplAiLogo}/>
         </Link>
       </div>

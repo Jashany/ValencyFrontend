@@ -5,6 +5,7 @@ import { Fragment, useRef } from "react";
 import FlowElement from "../Components/Landing/FlowElement";
 import Line from "../Components/Landing/Line";
 import { useNavigate } from "react-router-dom";
+import amplAiLogo from "../assets/logo.svg"
 
 export default function Landing() {
 
@@ -63,7 +64,7 @@ export default function Landing() {
         transition={{ delay: 0.3, duration: 0.8 }}
         className="flex items-center bg-[#181818]/70 backdrop-blur-md flex-row justify-evenly py-4 sticky top-0 z-10"
       >
-        <img src={"/logo.svg"} width={200} height={50} alt="logo" />
+        <img src={amplAiLogo} width={200} height={50} alt="logo" />
         <div className="flex gap-16">
           <a
             className="text-gray-400 hover:text-gray-100 transition-colors"

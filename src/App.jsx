@@ -27,7 +27,7 @@ function App() {
         location.pathname === "/sign-in" ||
         location.pathname === "/sign-up"
           ? ""
-          : "bg-[#171717] flex w-full h-screen"
+          : "bg-[#181818] flex w-full h-screen"
       }`}
     >
       <Routes>
@@ -45,6 +45,8 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="/admin/" element={<AdminHome />} />
           <Route path="/admin/grid" element={<AdminGrid />} />
+          <Route path='/admin/portfolio' element={<AdminPortfolio />} />
+          <Route path='/admin/trading' element={<AdminTrading />} />
         </Route>
       </Routes>
     </div>
@@ -53,7 +55,7 @@ function App() {
 
 const LandingLayout = () => {
   return (
-    <div className="bg-[#171717]">
+    <div className="bg-[#181818]">
       <Outlet />
     </div>
   );
