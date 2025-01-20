@@ -54,10 +54,10 @@ const AreaChart = ({ data: initialData, xKey, yKey, heading }) => {
         <h3
           style={{
             textAlign: "left",
-            color: "#fff",
+            color: "#d2d2d2",
             marginBottom: "20px",
-            fontSize: "1.75rem",
-            fontWeight: "600",
+            fontSize: "1.5rem",
+            fontWeight: "700",
             marginLeft: "20px",
             marginTop: "10px",
           }}

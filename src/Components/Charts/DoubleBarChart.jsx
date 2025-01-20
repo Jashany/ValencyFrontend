@@ -28,10 +28,10 @@ const DoubleBarChart = ({ data, xKey, yKey1, yKey2, heading }) => {
         <h3
           style={{
             textAlign: "left",
-            color: "#fff",
+            color: "#d2d2d2",
             marginBottom: "10px",
-            fontSize: "1.75rem",
-            fontWeight: "600",
+            fontSize: "1.5rem",
+            fontWeight: "700",
             marginLeft: "20px",
             marginTop: "0px",
           }}
@@ -73,13 +73,13 @@ const DoubleBarChart = ({ data, xKey, yKey1, yKey2, heading }) => {
           {/* <Legend wrapperStyle={{ color: "#fff" }} /> */}
           <Bar
             dataKey={yKey1}
-            fill={`url(#${gradientId1})`}
+            fill={`#FFFEA0`}
             radius={[5, 5, 0, 0]}
             name="Dataset 1"
           />
           <Bar
             dataKey={yKey2}
-            fill={`url(#${gradientId2})`}
+            fill={`#333333`}
             radius={[5, 5, 0, 0]}
             name="Dataset 2"
           />

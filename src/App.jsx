@@ -1,16 +1,21 @@
-import "./App.css";
-import { Routes, Route, Outlet, useLocation } from "react-router-dom";
-import { Sidebar } from "./Components/UI/Sidebar";
-import { Header } from "./Components/UI/Header";
-import EnergyDetails from "./Views/EnergyDetails";
-import Home from "./Views/Home";
-import SellDashboard from "./Views/SellDashboard";
-import BuyDashboard from "./Views/BuyDashboard";
-import AdminHome from "./Admin/AdminHome";
-import AdminGrid from "./Admin/AdminGrid";
-import Landing from "./Views/Landing";
-import SigninPage from "./Views/Signin";
-import SignupPage from "./Views/Signup";
+import { useState } from 'react'
+import './App.css'
+import { Routes,Route,Outlet, useLocation } from 'react-router-dom'
+import { Sidebar } from './Components/UI/Sidebar'
+import { Header } from './Components/UI/Header'
+import EnergyDetails from './Views/EnergyDetails'
+import Home from './Views/Home'
+import SellDashboard from './Views/SellDashboard'
+import BuyDashboard from './Views/BuyDashboard'
+import AdminHome from './Admin/AdminHome'
+import AdminGrid from './Admin/AdminGrid'
+import AdminPortfolio from './Admin/AdminPortfolio'
+import AdminTrading from './Admin/AdminTrading'
+import { AdminSideBar } from './Components/UI/AdminSideBar'
+import SigninPage from './Views/Signin'
+import SignupPage from './Views/Signup'
+import Landing from './Views/Landing'
+
 
 function App() {
   const location = useLocation();
@@ -68,9 +73,9 @@ const Layout = () => {
 
 const AdminLayout = () => {
   return (
-    <div className="flex flex-grow">
-      <Sidebar />
-      <div className="w-[100%] h-[100dvh] overflow-scroll">
+    <div className='flex flex-grow'>
+      <AdminSideBar />
+      <div className='w-[100%] h-[100dvh] overflow-scroll'>
         <Header />
         <Outlet />
       </div>

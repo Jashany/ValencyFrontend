@@ -3,9 +3,9 @@ import ShiftButton from "../Buttons/Shift";
 import icon from "../../assets/icon.png";
 export function Header() {
   return (
-    <header className="flex h-16 w-full items-center justify-between px-6">
+    <header className="flex w-full items-center justify-between px-14 py-8">
       <div className="flex items-center gap-2">
-        <span className="text-md font-semibold text-muted-foreground  text-PrimaryGrayText">
+        <span className="text-base font-semibold text-muted-foreground  text-PrimaryGrayText">
           Good Morning,
         </span>
         <span
@@ -18,14 +18,14 @@ export function Header() {
           }}
           className="font-bold text-xl"
         >
-          Bradd Pitt
+          Jashan
         </span>
       </div>
       <div className="flex items-center gap-6">
         <ShiftButton />
         <div className="flex items-center gap-4">
           <div className="flex flex-col items-end">
-          <span className="text-xl text-PrimaryWhiteText">Bradd Pitt</span>
+          <span className="text-xl text-PrimaryWhiteText">Jashan</span>
           <span className="text-xs text-muted-foreground text-PrimaryGrayText">ID: 96627596</span>
           </div>
           <img
