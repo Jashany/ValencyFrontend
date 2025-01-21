@@ -18,14 +18,14 @@ export function Header() {
           }}
           className="font-bold text-xl"
         >
-          Jashan
+          User
         </span>
       </div>
       <div className="flex items-center gap-6">
         {/* <ShiftButton /> */}
         <div className="flex items-center gap-4">
           <div className="flex flex-col items-end">
-          <span className="text-xl text-PrimaryWhiteText">Jashan</span>
+          <span className="text-xl text-PrimaryWhiteText">User</span>
           <span className="text-xs text-muted-foreground text-PrimaryGrayText">ID: 96627596</span>
           </div>
           <img
