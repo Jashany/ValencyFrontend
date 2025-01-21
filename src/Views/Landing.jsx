@@ -64,6 +64,7 @@ export default function Landing() {
           <a
             className="text-gray-950 hover:text-gray-800 hover:font-semibold transition-all"
             href="http://valencyenergy.com/"
+            target="_blank"
           >
             Go Solar with Valency Energy
           </a>
