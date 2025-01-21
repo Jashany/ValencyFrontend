@@ -19,11 +19,13 @@ export default function Landing() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(`#${entry.target.id}`);
+            const sectionId = `#${entry.target.id}`;
+            const fullPath = `${window.location.origin}/${sectionId}`;
+            setActiveSection(fullPath);
           }
         });
       },
-      { threshold: 0 } 
+      { threshold: 0.6 } // Adjust threshold for when a section is considered "in view"
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -91,16 +93,19 @@ export default function Landing() {
       <img src={amplAiLogo} width={200} height={50} alt="logo" />
       <div className="flex gap-16">
         {[
-          { name: "Home", href: "#home" },
-          { name: "About Us", href: "#about" },
-          { name: "Technology Overview", href: "#technology" },
-          { name: "Current Partners", href: "#footer" },
+          { name: "Home", href: `${window.location.origin}/#home` },
+          { name: "About Us", href: `${window.location.origin}/#about` },
+          {
+            name: "Technology Overview",
+            href: `${window.location.origin}/#technology`,
+          },
+          { name: "Current Partners", href: `${window.location.origin}/#footer` },
         ].map(({ name, href }) => (
           <a
             key={name}
             href={href}
             className={`text-gray-400 hover:text-gray-100 transition-colors ${
-              activeSection === href ? "text-gray-100 font-bold" : ""
+              activeSection === href ? "text-white" : ""
             }`}
           >
             {name}
