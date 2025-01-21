@@ -4,6 +4,7 @@ import price from "../assets/1.png";
 import balance from "../assets/2.png";
 import energy from "../assets/3.png";
 import revenue from "../assets/4.png";
+import { generateEnergyConsumption,generateEnergyGeneration, generateMarketDemand } from "../Functions/GenerateFnc";
 
 const headCardsData = [
   { heading: "Current Price", text: "₹10.82/kWh", icon: price },
@@ -39,12 +40,14 @@ const Home = () => {
           data={sampleData}
           xKey={"time"}
           yKey={"value"}
+          generateData={generateEnergyConsumption}
           heading={"Energy Consumption Trend"}
         />
         <AreaChart
           data={sampleData}
           xKey={"time"}
           yKey={"value"}
+          generateData={generateEnergyGeneration}
           heading={"Energy Generation Trend"}
         />
       </div>
@@ -53,6 +56,7 @@ const Home = () => {
           data={sampleData}
           xKey={"time"}
           yKey={"value"}
+          generateData={generateMarketDemand}
           heading={"Market Demand Trend"}
         />
       </div>

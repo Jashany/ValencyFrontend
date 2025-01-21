@@ -83,13 +83,13 @@ const DoubleBarChart = ({ data, xKey, yKey1, yKey2, heading }) => {
             dataKey={yKey1}
             fill={`#FFFEA0`}
             radius={[5, 5, 0, 0]}
-            name="Dataset 1"
+            name={yKey1}
           />
           <Bar
             dataKey={yKey2}
             fill={`#333333`}
             radius={[5, 5, 0, 0]}
-            name="Dataset 2"
+            name={yKey2}
           />
         </RechartsBarChart>
       </ResponsiveContainer>
