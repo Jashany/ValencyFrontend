@@ -56,10 +56,10 @@ const DoubleAreaChart = ({ data: initialData, xKey, yKeys, heading }) => {
         <h3
           style={{
             textAlign: "left",
-            color: "#fff",
+            color: "#d2d2d2",
             marginBottom: "20px",
-            fontSize: "1.75rem",
-            fontWeight: "600",
+            fontSize: "1.5rem",
+            fontWeight: "700",
             marginLeft: "20px",
             marginTop: "10px",
           }}
@@ -105,12 +105,19 @@ const DoubleAreaChart = ({ data: initialData, xKey, yKeys, heading }) => {
           <YAxis tick={{ fill: "#aaa" }} />
           <Tooltip
             contentStyle={{
-              backgroundColor: "#333",
-              border: "none",
-              borderRadius: "8px",
+              borderRadius: "8px 8px 8px 0px",
+              border: "0.5px solid #3D3D3D",
+              background: "linear-gradient(77deg, rgba(47, 47, 47, 0.80) 21.25%, rgba(44, 44, 44, 0.40) 81.06%)",
+              backdropFilter: "blur(16px)",
               color: "#fff",
             }}
-            itemStyle={{ color: "#fff" }}
+            itemStyle={{
+              background: "linear-gradient(90deg, #AAE6E7 0%, #95E362 100%)",  
+              WebkitBackgroundClip: "text", 
+              color: "transparent", 
+              fontSize: "1rem",
+              fontWeight: "700",
+            }}
           />
           {/* First Area */}
           <Area

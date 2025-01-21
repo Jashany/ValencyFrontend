@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { Home, LayoutDashboard, Zap, Pizza, Settings, LogOut } from 'lucide-react';
 import amplAiLogo from "../../assets/logo.svg";
 import ToggleButton from "../Buttons/Toggle"
@@ -15,6 +15,7 @@ export function Sidebar() {
 
   return (
     <aside className=" h-screen min-w-[250px] w-[15%] rounded-r-2xl text-PrimaryGrayTextLight bg-[#1D1D1D]">
+      
       <div className="flex h-16 items-center pl-8 pt-8">
         <Link href="/dashboard">
           <img src = {amplAiLogo}/>
@@ -58,10 +59,18 @@ export function Sidebar() {
           <Settings className="h-5 w-5" />
           Settings
         </Link>
-        <button className="flex items-center gap-3 font-medium rounded-lg px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground">
+
+        <Link
+          to="/"
+          className="flex items-center gap-3 font-medium rounded-lg px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
+        >
           <LogOut className="h-5 w-5" />
           Log Out
-        </button>
+        </Link>
+        {/* <button className="flex items-center gap-3 font-medium rounded-lg px-3 py-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground">
+          <LogOut className="h-5 w-5" />
+          Log Out
+        </button> */}
       </div>
     </aside>
   )

@@ -61,14 +61,22 @@ const BarChart = ({ data, xKey, yKey, heading }) => {
           <YAxis tick={{ fill: "#fff" }} />
           <Tooltip
             contentStyle={{
-              backgroundColor: "#333",
-              border: "none",
-              borderRadius: "8px",
+              borderRadius: "8px 8px 8px 0px",
+              border: "0.5px solid #3D3D3D",
+              background: "linear-gradient(77deg, rgba(47, 47, 47, 0.80) 21.25%, rgba(44, 44, 44, 0.40) 81.06%)",
+              backdropFilter: "blur(16px)",
               color: "#fff",
             }}
-            itemStyle={{ color: "#fff" }}
+            itemStyle={{
+              background: "linear-gradient(90deg, #AAE6E7 0%, #95E362 100%)",  
+              WebkitBackgroundClip: "text", 
+              color: "transparent", 
+              fontSize: "1rem",
+              fontWeight: "700",
+            }}
           />
           <Bar
+           
             dataKey={yKey}
             fill={`url(#${gradientId})`}
             radius={[5, 5, 0, 0]}
