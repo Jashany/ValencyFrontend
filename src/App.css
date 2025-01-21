@@ -110,3 +110,9 @@
   color: #f4f4f6; /* White text for body */
   padding: 8px 16px; /* Row padding */
 }
+
+.recharts-default-tooltip {
+  background-color: transparent !important; /* Remove background */
+  border: none !important;                 /* Remove border */
+  color: white !important;                 /* Text color */
+}

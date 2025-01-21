@@ -24,7 +24,7 @@ export function AdminSideBar() {
     <aside className=" h-screen min-w-[250px] w-[15%] rounded-r-2xl text-PrimaryGrayTextLight bg-[#1D1D1D]">
       
       <div className="flex h-16 items-center pl-8 pt-8 mb-16">
-        <Link href="/admin">
+        <Link to="/">
           <img src={amplAiLogo} />
         </Link>
       </div>
