@@ -92,7 +92,7 @@ const GridLoad = ({ heading, upperData, data, xKey, yKey1, yKey2 }) => {
               backdropFilter: "blur(16px)",
               color: "#fff",
             }}
-            cursor={false}
+            cursor={{ fill: "#D9D9D905" }}
             itemStyle={{
               background: "linear-gradient(90deg, #AAE6E7 0%, #95E362 100%)",
               WebkitBackgroundClip: "text",
