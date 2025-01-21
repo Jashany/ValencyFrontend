@@ -1,7 +1,7 @@
 "use client";
 import { motion, useScroll, useTransform } from "motion/react";
 import { spring } from "motion";
-import { Fragment, useRef } from "react";
+import { Fragment, useRef, useState, useEffect } from "react";
 import FlowElement from "../Components/Landing/FlowElement";
 import Line from "../Components/Landing/Line";
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,28 @@ import amplAiLogo from "../assets/logo.svg"
 export default function Landing() {
 
     const router = useNavigate();
+
+    const [activeSection, setActiveSection] = useState("#home");
+
+  useEffect(() => {
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(`#${entry.target.id}`);
+          }
+        });
+      },
+      { threshold: 0 } 
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => {
+      sections.forEach((section) => observer.unobserve(section));
+    };
+  }, []);
 
   const gradientStyle =
     "bg-gradient-to-r from-[#AAE6E7] to-[#95E362] inline-block text-transparent bg-clip-text";
@@ -39,67 +61,69 @@ export default function Landing() {
       >
         <div className="flex gap-24">
           <a
-            className="text-gray-950 hover:text-gray-800 transition-colors"
+            className="text-gray-950 hover:text-gray-800 hover:font-semibold transition-all"
             href="#home"
           >
             Go Solar with Valency Energy
           </a>
           <a
-            className="text-gray-950 hover:text-gray-800 transition-colors"
-            href="#features"
+            className="text-gray-950 hover:text-gray-800 hover:font-semibold transition-all"
+            href="https://docs.google.com/forms/d/1qpu_8xiENVgHkqmeozBwBng8XiyWwqlJ1kljBAeMO7s/edit"
+            target="_blank"
           >
             Become a Partner
           </a>
           <a
-            className="text-gray-950 hover:text-gray-800 transition-colors"
-            href="#footer"
+            className="text-gray-950 hover:text-gray-800 hover:font-semibold transition-all"
+            href="https://docs.google.com/forms/d/1SFsAP01J3n5h5clCLHhaRmiHpbsWzZmsIS_Gj4Af0no/edit"
+            target="_blank"
           >
             Become an Investor
           </a>
         </div>
       </motion.div>
       <motion.nav
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-        className="flex items-center bg-[#181818]/70 backdrop-blur-md flex-row justify-evenly py-4 sticky top-0 z-10"
-      >
-        <img src={amplAiLogo} width={200} height={50} alt="logo" />
-        <div className="flex gap-16">
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.8 }}
+      className="flex items-center bg-[#181818]/70 backdrop-blur-md flex-row justify-evenly py-4 sticky top-0 z-10"
+    >
+      <img src={amplAiLogo} width={200} height={50} alt="logo" />
+      <div className="flex gap-16">
+        {[
+          { name: "Home", href: "#home" },
+          { name: "About Us", href: "#about" },
+          { name: "Technology Overview", href: "#technology" },
+          { name: "Current Partners", href: "#footer" },
+        ].map(({ name, href }) => (
           <a
-            className="text-gray-400 hover:text-gray-100 transition-colors"
-            href="#home"
+            key={name}
+            href={href}
+            className={`text-gray-400 hover:text-gray-100 transition-colors ${
+              activeSection === href ? "text-gray-100 font-bold" : ""
+            }`}
           >
-            Home
+            {name}
           </a>
-          <a
-            className="text-gray-400 hover:text-gray-100 transition-colors"
-            href="#about"
-          >
-            About Us
-          </a>
-          <a
-            className="text-gray-400 hover:text-gray-100 transition-colors"
-            href="#technology"
-          >
-            Technology Overview
-          </a>
-          <a
-            className="text-gray-400 hover:text-gray-100 transition-colors"
-            href="#footer"
-          >
-            Current Partners
-          </a>
-        </div>
-        <div className="flex gap-10 items-center">
-          <button onClick={() => {router("/sign-in")}} className={`${gradientStyle}`}>Login</button>
-          <button onClick={() => {router("/sign-up")}} className="bg-gradient-to-r from-[#AAE6E7] to-[#95E362] text-black px-4 py-2 rounded-md">
-            Get Started
-          </button>
-        </div>
-      </motion.nav>
+        ))}
+      </div>
+      <div className="flex gap-10 items-center">
+        <button
+          onClick={() => router("/sign-in")}
+          className={`${gradientStyle}`}
+        >
+          Login
+        </button>
+        <button
+          onClick={() => router("/sign-up")}
+          className="bg-gradient-to-r from-[#AAE6E7] to-[#95E362] text-black px-4 py-2 rounded-md"
+        >
+          Get Started
+        </button>
+      </div>
+    </motion.nav>
 
-      <main className="w-full min-h-full pb-14">
+      <section className="w-full min-h-full pb-14" id="home">
         <motion.img
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -110,7 +134,7 @@ export default function Landing() {
           alt="bg-grid"
           className="absolute -mt-5"
         />
-        <div className="flex flex-col items-center" id="home">
+        <div className="flex flex-col items-center">
           <motion.h1
             initial={{ scale: 0 }}
             animate={{
@@ -202,7 +226,7 @@ export default function Landing() {
           height={120}
           alt="bulb"
         />
-      </main>
+      </section>
 
       <section className="bg-[#1F1F1F] rounded-3xl p-28 relative" id="about">
         <motion.img initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{margin: "-200px", once: true}} src="/about_bg.svg" className="absolute left-0 h-[500px] -mt-5" />
@@ -361,44 +385,45 @@ export default function Landing() {
         </div>
       </section>
 
-      <motion.footer
+      <motion.section
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ margin: "-200px", once: true }}
         transition={{ delay: 0.3, duration: 0.8 }}
         className="bg-[#1F1F1F] py-28 rounded-3xl flex flex-col items-center"
+        id="footer"
       >
         <div className="flex gap-36 justify-center">
           <div className="flex flex-col">
             <p className="text-white font-semibold">Product</p>
-            <p className="mt-5 text-gray-400">Dashboard</p>
-            <p className="mt-5 text-gray-400">Admin</p>
-            <p className="mt-5 text-gray-400">Energy</p>
-            <p className="mt-5 text-gray-400">Grid</p>
-            <p className="mt-5 text-gray-400">Trading</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Dashboard</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Admin</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Energy</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Grid</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Trading</p>
           </div>
 
           <div className="flex flex-col">
             <p className="text-white font-semibold">Explore</p>
-            <p className="mt-5 text-gray-400">Resources</p>
-            <p className="mt-5 text-gray-400">Blog</p>
-            <p className="mt-5 text-gray-400">Documents</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Resources</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Blog</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Documents</p>
           </div>
 
           <div className="flex flex-col">
             <p className="text-white font-semibold">Community</p>
-            <p className="mt-5 text-gray-400">Community Central</p>
-            <p className="mt-5 text-gray-400">Support</p>
-            <p className="mt-5 text-gray-400">Help</p>
-            <p className="mt-5 text-gray-400">Ny Info</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Community Central</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Support</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Help</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Ny Info</p>
           </div>
 
           <div className="flex flex-col">
             <p className="text-white font-semibold">Company</p>
-            <p className="mt-5 text-gray-400">About Us</p>
-            <p className="mt-5 text-gray-400">Current Partners</p>
-            <p className="mt-5 text-gray-400">Become Partner</p>
-            <p className="mt-5 text-gray-400">Become Investor</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">About Us</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Current Partners</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Become Partner</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Become Investor</p>
           </div>
         </div>
         <img
@@ -408,7 +433,7 @@ export default function Landing() {
           width={246}
           height={150}
         />
-      </motion.footer>
+      </motion.section>
     </>
   );
 }
