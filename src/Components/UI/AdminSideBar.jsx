@@ -7,6 +7,7 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
+import amplAiLogo from "../../assets/logo.svg";
 
 const navItems = [
   { icon: Home, label: "Home", href: "/admin" },
@@ -19,23 +20,10 @@ export function AdminSideBar() {
   const navigate = useNavigate();
   return (
     <aside className=" h-screen min-w-[250px] w-[15%] rounded-r-2xl text-PrimaryGrayTextLight bg-[#1D1D1D]">
-      <div className="flex h-16 items-center px-6">
-        <Link className="flex items-center gap-2 font-semibold" href="/">
-          {/* <Zap className="h-6 w-6 text-PrimaryGrayTextLight" /> */}
-          <span
-            style={{
-              background:
-                "linear-gradient(180deg, #EDEDED 0%, #BFF1B7 50%, #95E362 100%)",
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
-              fontWeight: "900",
-            }}
-            className="text-xl"
-          >
-            VALENCY ENERGY
-          </span>
-        </Link>
+      <div className="flex h-16 mt-5 items-center px-6">
+          <Link href="/">
+            <img src={amplAiLogo} />
+          </Link>
       </div>
       <div className="flex flex-col gap-1 p-4">
         {navItems.map((item) => (

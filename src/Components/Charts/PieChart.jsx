@@ -78,7 +78,7 @@ const HalfPieChart = ({ data, dataKey, heading,underKeyData }) => {
                 wordBreak:"break-all"
               }}
             >
-              {underKeyData ? `${underKeyData}`  : totalPercentage}
+              {underKeyData ? `${underKeyData}`  : `${totalPercentage}%`}
             </text>
           </RechartsPieChart>
         </ResponsiveContainer>

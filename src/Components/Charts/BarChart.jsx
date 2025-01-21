@@ -61,12 +61,18 @@ const BarChart = ({ data, xKey, yKey, heading }) => {
           <YAxis tick={{ fill: "#fff" }} />
           <Tooltip
             contentStyle={{
-              backgroundColor: "#333",
+              backgroundColor: "#000",
               border: "none",
               borderRadius: "8px",
               color: "#fff",
             }}
-            itemStyle={{ color: "#fff" }}
+            itemStyle={{ color: "#fff",backgroundColor:"#000" }}
+            labelStyle={{
+              color: "#fff",
+              fontWeight: "bold",
+              fontSize: "14px",
+              backgroundColor:"#000"
+            }}
           />
           <Bar
             dataKey={yKey}

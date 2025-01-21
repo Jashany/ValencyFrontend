@@ -8,6 +8,7 @@ import Transcation from "../Components/UI/Transaction";
 import BarChart from "../Components/Charts/BarChart";
 import Records from "../Components/UI/Records";
 import DoubleBarChart from "../Components/Charts/DoubleBarChart";
+import { generatePricePrediction } from "../Functions/GenerateFnc";
 
 const consumptionHistory = [
   { date: "7 Jan", consumption: 90 },
@@ -68,6 +69,7 @@ const BuyDashboard = () => {
             data={pricePredictions}
             xKey={"time"}
             yKey={"price"}
+            generateData={generatePricePrediction}
             heading={"Price Predictions"}
           />
         </div>

@@ -33,8 +33,8 @@ const HorizontalBars = ({ data, heading }) => {
           {heading}
         </h3>
       )}
-      <div>
-        <div className="space-y-6">
+      <div className="h-[90%]">
+        <div className="space-y-6 flex flex-col justify-between h-full">
           {metrics.map((metric) => (
             <div
               key={metric.label}
@@ -43,13 +43,20 @@ const HorizontalBars = ({ data, heading }) => {
               <p className="w-[20%] text-sm text-[#FFFFFFCC]">{metric.label}</p>
               <div className="flex flex-col w-[70%] space-x-2">
                 <div
-                  className="bg-[#FFFEA0] ml-[8px] h-4 rounded-r-md h-[20px]"
+                  className="bg-[#FFFEA0] ml-[8px] rounded-r-md h-[30px]"
                   style={{
                     width: `${(metric.value / metric.maxValue) * 100}%`,
                   }}
                 ></div>
                 <div className="h-[1px] w-full border-b-2 border-white border-dashed">
-
+                  {/* write the percentage markings  */}
+                </div>
+                <div className="flex justify-between text-xs text-[#FFFFFFCC]">
+                  <span>0%</span>
+                  <span>25%</span>
+                  <span>50%</span>
+                  <span>75%</span>
+                  <span>100%</span>
                 </div>
                 {/* <p className="text-white">{metric.value}%</p> */}
               </div>

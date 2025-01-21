@@ -8,6 +8,8 @@ import Transcation from "../Components/UI/Transaction";
 import BarChart from "../Components/Charts/BarChart";
 import Records from "../Components/UI/Records";
 import DoubleBarChart from "../Components/Charts/DoubleBarChart";
+import { generateEnergyConsumption,generateEnergyGeneration } from "../Functions/GenerateFnc";
+import { Area, Bar } from "recharts";
 
 const consumptionHistory = [
   { date: "7 Jan", consumption: 90 },
@@ -63,13 +65,21 @@ const SellDashboard = () => {
         ))}
       </div>
       <div className="flex min-h-[350px] lg:flex-row flex-col w-full gap-6">
-        <div className="flex w-[70%]">
+        <div className="flex w-[70%] gap-6">
           <AreaChart
             data={pricePredictions}
             xKey={"time"}
+            generateData={generateEnergyConsumption}
             yKey={"price"}
             heading={"Price Predictions"}
           />
+          <AreaChart 
+            data={pricePredictions}
+            xKey={"time"}
+            generateData={generateEnergyGeneration}
+            yKey={"price"}
+            heading={"Energy Generation Trend"}
+            />
         </div>
         <div className="flex w-[30%]">
           <Transcation />
@@ -81,15 +91,14 @@ const SellDashboard = () => {
             data={consumptionHistory}
             xKey={"date"}
             yKey={"consumption"}
-            heading={"Energy Consumption History"}
+            heading={"Energy Sold"}
           />
-          <DoubleBarChart
+          <BarChart
             data={energyPurchased}
             xKey={"date"}
-            yKey1={"energy"}
-            yKey2={"price"}
+            yKey={"energy"}
             heading={"Energy Purchased"}
-          />
+            />
         </div>
         <div className="flex w-[30%]">
             <Records data={transactions} />
