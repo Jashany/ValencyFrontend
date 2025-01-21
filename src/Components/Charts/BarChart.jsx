@@ -75,6 +75,7 @@ const BarChart = ({ data, xKey, yKey, heading }) => {
             }}
           />
           <Bar
+           
             dataKey={yKey}
             fill={`url(#${gradientId})`}
             radius={[5, 5, 0, 0]}

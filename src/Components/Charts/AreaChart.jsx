@@ -93,6 +93,7 @@ const AreaChart = ({ xKey = "time", heading, generateData }) => {
             labelStyle={{ color: "#8f8f8f", textAlign: "center" }}
             itemStyle={{ color: "#fff" }}
           />
+
           <Area
             type="monotone"
             dataKey={Object.keys(data[0] || {})[1]} // Dynamically set the key

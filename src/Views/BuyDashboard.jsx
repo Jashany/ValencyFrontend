@@ -37,12 +37,13 @@ const pricePredictions = [
 ];
 
 const transactions = [
-    { date: "7 Jan", pricePerUnit: 11.0, amount: 40, total: 440.0 },
-    { date: "7 Jan", pricePerUnit: 11.0, amount: 40, total: 440.0 },
-    { date: "7 Jan", pricePerUnit: 11.0, amount: 40, total: 440.0 },
-    { date: "7 Jan", pricePerUnit: 11.0, amount: 40, total: 440.0 },
-    { date: "7 Jan", pricePerUnit: 11.0, amount: 40, total: 440.0 },
-  ];
+  { date: "7 Jan", pricePerUnit: 10.5, amount: 50, total: 525.1 },
+  { date: "8 Jan", pricePerUnit: 11.2, amount: 30, total: 336.3 },
+  { date: "9 Jan", pricePerUnit: 10.8, amount: 45, total: 486.5 },
+  { date: "10 Jan", pricePerUnit: 11.0, amount: 60, total: 660.2 },
+  { date: "11 Jan", pricePerUnit: 11.5, amount: 35, total: 402.5 },
+  { date: "12 Jan", pricePerUnit: 9.4, amount: 40, total: 703.8 },
+];
   
 
 const headCardsData = [

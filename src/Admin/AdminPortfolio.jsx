@@ -10,8 +10,8 @@ import DoubleBarChart from "../Components/Charts/DoubleBarChart";
 import HalfPieChart from "../Components/Charts/PieChart";
 const AdminPortfolio = () => {
   return (
-    <div className="flex flex-col w-[90%] gap-6 mx-auto mt-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full ">
+    <div className="flex flex-col w-[90%] gap-4 mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full mb-4">
         {PortfolioHeadCards.map((item) => (
           <HeadCards
             key={item.heading}
@@ -21,7 +21,7 @@ const AdminPortfolio = () => {
           />
         ))}
       </div>
-      <div className="flex min-h-[350px] lg:flex-row flex-col w-full gap-6">
+      <div className="flex min-h-[350px] lg:flex-row flex-col w-full gap-4">
         <div className="flex flex-1">
           <HalfPieChart
             data={assetDistributionData.sources}
