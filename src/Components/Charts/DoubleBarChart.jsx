@@ -70,6 +70,7 @@ const DoubleBarChart = ({ data, xKey, yKey1, yKey2, heading }) => {
               color: "#fff",
             }}
             cursor={{ fill: "#D9D9D91A" }}
+
             itemStyle={{
               background: "linear-gradient(90deg, #AAE6E7 0%, #95E362 100%)",  
               WebkitBackgroundClip: "text", 
