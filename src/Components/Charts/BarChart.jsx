@@ -67,6 +67,7 @@ const BarChart = ({ data, xKey, yKey, heading }) => {
               color: "#fff",
             }}
             itemStyle={{ color: "#fff",backgroundColor:"#000" }}
+            cursor={{ fill: "#D9D9D91A" }}
             labelStyle={{
               color: "#fff",
               fontWeight: "bold",

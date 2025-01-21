@@ -5,13 +5,12 @@ import { Fragment, useRef, useState, useEffect } from "react";
 import FlowElement from "../Components/Landing/FlowElement";
 import Line from "../Components/Landing/Line";
 import { useNavigate } from "react-router-dom";
-import amplAiLogo from "../assets/logo.svg"
+import amplAiLogo from "../assets/logo.svg";
 
 export default function Landing() {
+  const router = useNavigate();
 
-    const router = useNavigate();
-
-    const [activeSection, setActiveSection] = useState("#home");
+  const [activeSection, setActiveSection] = useState("#home");
 
   useEffect(() => {
     const sections = document.querySelectorAll("section");
@@ -49,9 +48,9 @@ export default function Landing() {
   ];
 
   const targetRef = useRef(null);
-  const {scrollYProgress} = useScroll({target: targetRef});
+  const { scrollYProgress } = useScroll({ target: targetRef });
 
-  const x = useTransform(scrollYProgress, [0, 0.75], ["83%", "-50%"])
+  const x = useTransform(scrollYProgress, [0, 0.75], ["83%", "-50%"]);
 
   return (
     <>
@@ -64,7 +63,7 @@ export default function Landing() {
         <div className="flex gap-24">
           <a
             className="text-gray-950 hover:text-gray-800 hover:font-semibold transition-all"
-            href="#home"
+            href="http://valencyenergy.com/"
           >
             Go Solar with Valency Energy
           </a>
@@ -85,48 +84,51 @@ export default function Landing() {
         </div>
       </motion.div>
       <motion.nav
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 0.3, duration: 0.8 }}
-      className="flex items-center bg-[#181818]/70 backdrop-blur-md flex-row justify-evenly py-4 sticky top-0 z-10"
-    >
-      <img src={amplAiLogo} width={200} height={50} alt="logo" />
-      <div className="flex gap-16">
-        {[
-          { name: "Home", href: `${window.location.origin}/#home` },
-          { name: "About Us", href: `${window.location.origin}/#about` },
-          {
-            name: "Technology Overview",
-            href: `${window.location.origin}/#technology`,
-          },
-          { name: "Current Partners", href: `${window.location.origin}/#footer` },
-        ].map(({ name, href }) => (
-          <a
-            key={name}
-            href={href}
-            className={`text-gray-400 hover:text-gray-100 transition-colors ${
-              activeSection === href ? "text-white" : ""
-            }`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.3, duration: 0.8 }}
+        className="flex items-center bg-[#181818]/70 backdrop-blur-md flex-row justify-evenly py-4 sticky top-0 z-10"
+      >
+        <img src={amplAiLogo} width={200} height={50} alt="logo" />
+        <div className="flex gap-16">
+          {[
+            { name: "Home", href: `${window.location.origin}/#home` },
+            { name: "About Us", href: `${window.location.origin}/#about` },
+            {
+              name: "Technology Overview",
+              href: `${window.location.origin}/#technology`,
+            },
+            {
+              name: "Current Partners",
+              href: `${window.location.origin}/#footer`,
+            },
+          ].map(({ name, href }) => (
+            <a
+              key={name}
+              href={href}
+              className={`text-gray-400 hover:text-gray-100 transition-colors ${
+                activeSection === href ? "text-white" : ""
+              }`}
+            >
+              {name}
+            </a>
+          ))}
+        </div>
+        <div className="flex gap-10 items-center">
+          <button
+            onClick={() => router("/sign-in")}
+            className={`${gradientStyle}`}
           >
-            {name}
-          </a>
-        ))}
-      </div>
-      <div className="flex gap-10 items-center">
-        <button
-          onClick={() => router("/sign-in")}
-          className={`${gradientStyle}`}
-        >
-          Login
-        </button>
-        <button
-          onClick={() => router("/sign-up")}
-          className="bg-gradient-to-r from-[#AAE6E7] to-[#95E362] text-black px-4 py-2 rounded-md"
-        >
-          Get Started
-        </button>
-      </div>
-    </motion.nav>
+            Login
+          </button>
+          <button
+            onClick={() => router("/sign-up")}
+            className="bg-gradient-to-r from-[#AAE6E7] to-[#95E362] text-black px-4 py-2 rounded-md"
+          >
+            Get Started
+          </button>
+        </div>
+      </motion.nav>
 
       <section className="w-full min-h-full pb-14" id="home">
         <motion.img
@@ -234,8 +236,20 @@ export default function Landing() {
       </section>
 
       <section className="bg-[#1F1F1F] rounded-3xl p-28 relative" id="about">
-        <motion.img initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{margin: "-200px", once: true}} src="/about_bg.svg" className="absolute left-0 h-[500px] -mt-5" />
-        <motion.img initial={{opacity: 0}} whileInView={{opacity: 1}} viewport={{margin: "-200px", once: true}} src="/about_bg.svg" className="absolute right-0 -scale-x-100 h-[500px] -mt-5" />
+        <motion.img
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ margin: "-200px", once: true }}
+          src="/about_bg.svg"
+          className="absolute left-0 h-[500px] -mt-5"
+        />
+        <motion.img
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ margin: "-200px", once: true }}
+          src="/about_bg.svg"
+          className="absolute right-0 -scale-x-100 h-[500px] -mt-5"
+        />
         <motion.h2
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -377,16 +391,44 @@ export default function Landing() {
         />
       </section>
 
-      <section ref={targetRef} className="relative h-[300vh]">
-        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
-          <motion.div style={{x}} className="flex items-center justify-center">
-            {elements.map((el, index) => (
-              <Fragment key={index}>
-                <FlowElement title={el.title} size={el.size} />
-                {index < elements.length - 1 && <Line />}
-              </Fragment>
-            ))}
-          </motion.div>
+      <section ref={targetRef} className="bg-black relative h-[300vh]">
+        <div className="sticky top-0 bg-[#181818] h-screen  overflow-hidden">
+          <div className="mt-32">
+            <motion.h2
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ margin: "-200px", once: true }}
+              className="text-[#585858] font-semibold tracking-widest text-center"
+            >
+              AMPL AI
+            </motion.h2>
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ margin: "-200px", once: true }}
+              transition={{ delay: 0.2 }}
+              className="flex flex-col items-center justify-center"
+            >
+              <h1
+                className={`mt-4 text-4xl text-center gap-2 ${gradientStyle}`}
+              >
+                Agentic Workflow
+              </h1>
+            </motion.div>
+          </div>
+          <div className="flex mt-40 items-center">
+            <motion.div
+              style={{ x }}
+              className="flex items-center justify-center"
+            >
+              {elements.map((el, index) => (
+                <Fragment key={index}>
+                  <FlowElement title={el.title} size={el.size} />
+                  {index < elements.length - 1 && <Line />}
+                </Fragment>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
@@ -401,34 +443,66 @@ export default function Landing() {
         <div className="flex gap-36 justify-center">
           <div className="flex flex-col">
             <p className="text-white font-semibold">Product</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Dashboard</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Admin</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Energy</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Grid</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Trading</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Dashboard
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Admin
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Energy
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Grid
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Trading
+            </p>
           </div>
 
           <div className="flex flex-col">
             <p className="text-white font-semibold">Explore</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Resources</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Blog</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Documents</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Resources
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Blog
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Documents
+            </p>
           </div>
 
           <div className="flex flex-col">
             <p className="text-white font-semibold">Community</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Community Central</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Support</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Help</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Ny Info</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Community Central
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Support
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Help
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Ny Info
+            </p>
           </div>
 
           <div className="flex flex-col">
             <p className="text-white font-semibold">Company</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">About Us</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Current Partners</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Become Partner</p>
-            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">Become Investor</p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              About Us
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Current Partners
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Become Partner
+            </p>
+            <p className="mt-5 text-gray-400 hover:text-white transition-colors cursor-pointer">
+              Become Investor
+            </p>
           </div>
         </div>
         <img
